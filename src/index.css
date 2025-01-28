@@ -1,2 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui"; 
+* {
+    font-family:'Inter';
+}
+.logo-font {
+    font-family: 'Dancing Script';
+}
