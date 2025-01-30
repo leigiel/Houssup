@@ -8,10 +8,10 @@ import Stats from '../Stats/Stats';
 
 const Home = () => {
     return (
-        <div className='border border-black m-3 flex flex-col gap-5'>
+        <div className='bg-blue-200 border border-black m-3 flex flex-col gap-5'>
         <Navbar></Navbar>
         <Hero></Hero>
-        <div className='ms-10'><Slider></Slider></div>
+        <Slider></Slider>
         <Houses></Houses>
         <Stats></Stats>
         <Footer></Footer>

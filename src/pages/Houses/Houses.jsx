@@ -2,13 +2,22 @@ import React, { useEffect, useState } from 'react';
 import House from './House';
 
 const Houses = () => {
-    const [value,setValue] = useState(6)
-    const [houses,setHouses] = useState([])
-    useEffect(()=>{
-        fetch('https://api2-kohl.vercel.app/allhouses')
-        .then(res=>res.json())
-        .then(data=>setHouses(data))
-    },[]) 
+  const [value, setValue] = useState(6);
+  const [houses, setHouses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+      fetch('https://api2-kohl.vercel.app/allhouses')
+          .then(res => res.json())
+          .then(data => {
+              setHouses(data);
+              setLoading(false);
+          });
+  }, []);
+
+  if (loading) {
+      return <div>Loading...</div>;
+  }
     return (
         <div className='max-w-6xl mx-auto mt-20'>
          <h2 className='text-center font-bold text-4xl border border-black shadow-lg text-black py-3 rounded-xl'>Houses Availble</h2>
@@ -39,13 +48,12 @@ const Houses = () => {
           </div>
             } 
          </div>
-        <div className='mt-5 flex justify-center'>
-      
-          
-            {
-                value === 6?<button className='btn btn-primary' onClick={()=>setValue(houses.length)}>View All</button>:<button className='btn btn-primary' onClick={()=>setValue(6)}>Show Four</button>
-            }
-        </div>
+         <div className='mt-5 flex justify-center'>
+                {value === 6
+                    ? <button className='btn btn-primary' onClick={() => setValue(houses.length)}>View All</button>
+                    : <button className='btn btn-primary' onClick={() => setValue(6)}>Show Fewer</button>
+                }
+            </div>
         </div>
     );
 };

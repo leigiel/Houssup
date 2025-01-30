@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const House = ({ house }) => {
 
-  const { house_title,id, image, area, rent, location, _id } = house;
+  const { house_title,id, image, area, rent, location, } = house;
   return (
     <div className="border border-black rounded-4xl">
       <div className="p-5">

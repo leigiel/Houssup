@@ -22,7 +22,7 @@ const Slider = () => {
     }, []);
 
     return (
-        <div className='max-w-6xl mx-auto mt-20'>
+        <div className='max-w-6xl mx-auto'>
             <div className="swiper">
                 <div className="swiper-wrapper">
                     {houses.length ? houses.map(house => (
