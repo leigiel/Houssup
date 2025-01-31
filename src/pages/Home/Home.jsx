@@ -8,13 +8,11 @@ import Stats from '../Stats/Stats';
 
 const Home = () => {
     return (
-        <div className='bg-blue-200 border border-black m-3 flex flex-col gap-5'>
-        <Navbar></Navbar>
+        <div className='flex flex-col'>
         <Hero></Hero>
         <Slider></Slider>
         <Houses></Houses>
         <Stats></Stats>
-        <Footer></Footer>
         </div>
     );
 };
