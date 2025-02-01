@@ -2,11 +2,12 @@ import React from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { getDataFromLocalStorage, setDataToLocalStorage } from "../../LocalStorage/LocalStorage";
+import MapComponent from "../../pages/MapComponent/MapComponent";
 
 const HouseDetails = () => {
   const dataArray = useLoaderData();
   const values = dataArray[0];
-  const { _id, house_title, description, rent, location,image, segment_name,area,facilities} = values || {}; 
+  const { _id, house_title, description, rent, location, image, segment_name, area, facilities } = values || {}; 
   const navigate = useNavigate();
 
   const handleSubmit = () => {
@@ -29,9 +30,9 @@ const HouseDetails = () => {
 
       <div className="grid grid-row-3 mt-20 gap-5">
         <div className=""> 
-          <img src={image} alt="" />
+          <img className="w-full h-full object-cover" src={image} alt="" />
         </div>
-        <div className=" border-2 border-blue-300 p-10 rounded-xl">
+        <div className="border-2 border-blue-300 p-10 rounded-xl">
           <h1 className="font-bold text-2xl">House Title</h1>
           <p className="text-xl mt-2">{house_title}</p>
           <hr className="border border-black mt-3" />
@@ -56,11 +57,15 @@ const HouseDetails = () => {
             <p className="font-bold text-2xl mt-2">Rent</p>
             <p className="text-xl font-semibold mt-3">{rent}</p>
           </div>
-          <div>
+         <div>
+         <div>
             <p className="font-bold text-2xl mt-2">Location</p>
             <p className="text-xl font-semibold mt-3">{location}</p>
           </div>
-
+          <div className="mt-3">
+        <MapComponent address={location} houseTitle={house_title} />
+      </div>
+         </div>
           <button className="btn bg-indigo-500 mt-5 px-10" onClick={handleSubmit}>
             Apply Now
           </button>
