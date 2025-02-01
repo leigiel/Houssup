@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import ErrorPage from "../Shared/ErrorPage/ErrorPage";
 import HouseDetails from "../pages/Houses/Housedetails";
+import Register from "../pages/Register/Register";
 
 
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
                   console.log(data); // Add this line to check the fetched data
                   return data;
                 }
+              },
+              {
+                path:'/register',
+                element:<Register></Register>
               },
             {
                 path: '*',

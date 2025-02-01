@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Swiper from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -13,56 +13,37 @@ const Slider = () => {
         fetch('https://api2-kohl.vercel.app/allhouses')
             .then(res => res.json())
             .then(data => setHouses(data));
-
-        const swiper = new Swiper('.swiper', {
-            modules: [Navigation, Pagination],
-            navigation: true,
-            pagination: { clickable: true },
-        });
     }, []);
 
     return (
-        <div className='max-w-6xl mx-auto'>
-            <div className="swiper">
-                <div className="swiper-wrapper">
-                    {houses.length ? houses.map(house => (
-                        <div className="swiper-slide" key={house._id}>
+        <div className='max-w-2xl mx-auto mt-10 flex items-center justify-center '>
+            <Swiper
+                modules={[Navigation, Pagination]}
+                navigation
+                pagination={{ clickable: true }}
+                spaceBetween={20}
+                slidesPerView={1}
+                loop={true}
+            >
+                {houses.length ? (
+                    houses.map(house => (
+                        <SwiperSlide key={house._id}>
                             <House house={house} />
-                        </div>
-                    )) : (
-                        <>
-                            <div className="swiper-slide">
-                                <div className="flex w-52 flex-col gap-4">
-                                    <div className="skeleton h-32 w-full"></div>
-                                    <div className="skeleton h-4 w-28"></div>
-                                    <div className="skeleton h-4 w-full"></div>
-                                    <div className="skeleton h-4 w-full"></div>
-                                </div>
+                        </SwiperSlide>
+                    ))
+                ) : (
+                    Array.from({ length: 3 }).map((_, index) => (
+                        <SwiperSlide key={index}>
+                            <div className="flex w-52 flex-col gap-4">
+                                <div className="skeleton h-32 w-full"></div>
+                                <div className="skeleton h-4 w-28"></div>
+                                <div className="skeleton h-4 w-full"></div>
+                                <div className="skeleton h-4 w-full"></div>
                             </div>
-                            <div className="swiper-slide">
-                                <div className="flex w-52 flex-col gap-4">
-                                    <div className="skeleton h-32 w-full"></div>
-                                    <div className="skeleton h-4 w-28"></div>
-                                    <div className="skeleton h-4 w-full"></div>
-                                    <div className="skeleton h-4 w-full"></div>
-                                </div>
-                            </div>
-                            <div className="swiper-slide">
-                                <div className="flex w-52 flex-col gap-4">
-                                    <div className="skeleton h-32 w-full"></div>
-                                    <div className="skeleton h-4 w-28"></div>
-                                    <div className="skeleton h-4 w-full"></div>
-                                    <div className="skeleton h-4 w-full"></div>
-                                </div>
-                            </div>
-                        </>
-                    )}
-                </div>
-                {/* Add Pagination and Navigation */}
-                <div className="swiper-pagination"></div>
-                <div className="swiper-button-next"></div>
-                <div className="swiper-button-prev"></div>
-            </div>
+                        </SwiperSlide>
+                    ))
+                )}
+            </Swiper>
         </div>
     );
 };

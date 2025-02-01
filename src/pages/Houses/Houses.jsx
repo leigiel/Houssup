@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import House from './House';
 
 const Houses = () => {
-    const [value, setValue] = useState(4); // Initial state to show only 4 houses
+    const [value, setValue] = useState(4); 
     const [houses, setHouses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [viewAll, setViewAll] = useState(false);
-    const housesPerPage = 9; // Show 9 houses per page
+    const housesPerPage = 9; 
 
     useEffect(() => {
         fetch('https://api2-kohl.vercel.app/allhouses')
