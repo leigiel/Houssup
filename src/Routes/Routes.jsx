@@ -5,8 +5,7 @@ import Login from "../pages/Login/Login";
 import ErrorPage from "../Shared/ErrorPage/ErrorPage";
 import HouseDetails from "../pages/Houses/Housedetails";
 import Register from "../pages/Register/Register";
-
-
+import Profile from "../pages/Profile/Profile";
 
 const router = createBrowserRouter([
     {
@@ -38,13 +37,16 @@ const router = createBrowserRouter([
                 path:'/register',
                 element:<Register></Register>
               },
+              {
+                path:'/profile',
+                element:<Profile></Profile>
+              },
             {
                 path: '*',
                 element: <ErrorPage></ErrorPage>
             }
         ]
     }
-    
 ])
 
 export default router;

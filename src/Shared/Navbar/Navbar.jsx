@@ -5,10 +5,10 @@ import userProfile from '../../assets/UserProfile.png';
 const Navbar = () => {
     const navLink = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/update-profile'>Update Profile</NavLink></li>
-        <li><NavLink to='/user-profile'>User Profile</NavLink></li>
+
+        <li><NavLink to='/profile'>User Profile</NavLink></li>
         <li><NavLink to='/login'>Login</NavLink></li>
-        <li><NavLink to='/logout'>Logout</NavLink></li>
+ 
     </>;
 
     return (
