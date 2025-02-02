@@ -14,11 +14,11 @@ const customIcon = new L.Icon({
 
 const locationCoordinates = {
   'Manhattan, New York': [40.7831, -73.9712],
-  // Add other predefined locations here
+
 };
 
 const MapComponent = ({ address, houseTitle }) => {
-  const position = locationCoordinates[address] || [40.7831, -73.9712]; // Default to Manhattan if address is not found
+  const position = locationCoordinates[address] || [40.7831, -73.9712]; 
 
   return (
     <MapContainer center={position} zoom={13} style={{ height: '300px', width: '100%' }}>

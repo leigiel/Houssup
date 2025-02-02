@@ -15,7 +15,7 @@ const Register = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Password validation
+  
     if (password.length < 6) {
       toast.error('Password must be at least 6 characters long');
       return;

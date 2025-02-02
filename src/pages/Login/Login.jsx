@@ -3,7 +3,7 @@ import { AuthContext } from '../../../Firebase/AuthContext';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { getRedirectResult } from 'firebase/auth';
-import { auth } from '../../../Firebase/Firebase.config'; // Correct import
+import { auth } from '../../../Firebase/Firebase.config'; 
 
 const Login = () => {
   const { login, googleLogin, githubLogin } = useContext(AuthContext);

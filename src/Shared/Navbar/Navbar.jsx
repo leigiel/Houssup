@@ -1,15 +1,27 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../Firebase/AuthContext';
 import userProfile from '../../assets/UserProfile.png';
 
 const Navbar = () => {
-    const navLink = <>
-        <li><NavLink to='/'>Home</NavLink></li>
+    const { user, logout } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-        <li><NavLink to='/profile'>User Profile</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
- 
-    </>;
+    const handleLogout = async () => {
+        await logout();
+        navigate('/login');
+    };
+
+    const navLink = (
+        <>
+            
+            {user ? (
+                <>  <li><NavLink to='/'>Home</NavLink></li>
+                    <li><NavLink to='/profile'>User Profile</NavLink></li>
+                </>
+            ) : <li><NavLink to='/'>Home</NavLink></li>}
+        </>
+    );
 
     return (
         <div className="navbar bg-blue-200 shadow-sm">
@@ -34,8 +46,14 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-2">
-                <img className='h-10' src={userProfile} alt="" />
-                <Link to='/login'><button className="btn btn-neutral px-7">Login</button></Link>
+                {user ? (
+                    <>
+                        <img className='h-10 w-10 rounded-full' src={user.photoURL || userProfile} alt="User" />
+                        <button onClick={handleLogout} className="btn btn-neutral px-7">Logout</button>
+                    </>
+                ) : (
+                    <Link to='/login'><button className="btn btn-neutral px-7">Login</button></Link>
+                )}
             </div>
         </div>
     );
